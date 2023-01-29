@@ -1,8 +1,8 @@
 export default function SignUpUser(firstName, lastName) {
-  return new Promise((resolve, undefined) => {
+  return new Promise((resolve, reject) => {
     resolve({
       firstName,
       lastName,
-    });
+    }), reject(Error('An error has occured'))
   });
 }

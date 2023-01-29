@@ -1,8 +1,8 @@
 export default function guardrail(mathFunction) {
-  let array = [];
+  const array = [];
   try {
     array.push(mathFunction());
-  } catch(e) {
+  } catch (e) {
     array.push(String(e));
   } finally {
     array.push('Guardrail was processed');
