@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express');
 const { readFile } = require('fs');
 
 function countStudents(fileName) {
@@ -42,27 +42,26 @@ function countStudents(fileName) {
   });
 }
 
-
-const app = express()
-const port = 1245
+const app = express();
+const port = 1245;
 
 app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
-})
+});
 
 app.get('/students', (req, res) => {
-  res.write('This is the list of our students\n')
+  res.write('This is the list of our students\n');
   countStudents(process.argv[2].toString())
-  .then((data) => {
-    res.end(data.slice(0, -1));
-  }).catch(() => {
-    res.statusCode = 404;
-    res.end('Cannot load the database');
-  })
-})
+    .then((data) => {
+      res.end(data.slice(0, -1));
+    }).catch(() => {
+      res.statusCode = 404;
+      res.end('Cannot load the database');
+    });
+});
 
 app.listen(port, () => {
   console.log(`App is running on port ${port}`);
-})
+});
 
 module.exports = app;

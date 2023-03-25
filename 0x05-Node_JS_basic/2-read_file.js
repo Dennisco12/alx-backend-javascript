@@ -1,16 +1,16 @@
-const fs = require('fs')
+const fs = require('fs');
 
 function countStudents(path) {
   try {
-    students = {}
-    length = 0
-    fields = {}
+    const students = {};
+    var fileLength = 0;
+    const fields = {};
     const content = fs.readFileSync(path, 'utf-8');
     const lines = content.toString().split('\n');
     for (let i = 0; i < lines.length; i += 1) {
       if (lines[i]) {
-        length += 1;
-        const field = lines[i].toString().split(',')
+        fileLength += 1;
+        const field = lines[i].toString().split(',');
         if (Object.prototype.hasOwnProperty.call(students, field[3])) {
           students[field[3]].push(field[0]);
         } else {
@@ -23,7 +23,7 @@ function countStudents(path) {
         }
       }
     }
-    const l = length - 1;
+    const l = fileLength - 1;
     console.log(`Number of students: ${l}`);
     for (const [key, val] of Object.entries(fields)) {
       if (key !== 'field') {

@@ -43,7 +43,7 @@ function countStudents(fileName) {
 }
 
 const hostname = '127.0.0.1';
-const port = 1245
+const port = 1245;
 
 const app = http.createServer((req, res) => {
   res.statusCode = 200;
@@ -52,18 +52,18 @@ const app = http.createServer((req, res) => {
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
     res.write('This is the list of our students\n');
-    path = process.argv[2].toString()
+    const path = process.argv[2].toString();
     countStudents(path)
-    .then((data) => {
-      res.end(data.slice(0, -1));
-    }).catch(() => {
-      res.statusCode = 404;
-      res.end('Cannot load the database')
-    });
+      .then((data) => {
+        res.end(data.slice(0, -1));
+      }).catch(() => {
+        res.statusCode = 404;
+        res.end('Cannot load the database');
+      });
   }
-})
+});
 app.listen(port, hostname, () => {
   console.log('App is running');
-})
+});
 
 module.exports = app;
