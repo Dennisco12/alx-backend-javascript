@@ -31,12 +31,12 @@ function countStudents(path) {
         for (const [key, val] of Object.entries(fields)) {
           if (key !== 'fields') {
             console.log(`Number of students in ${key}: ${val}. List: ${students[key].join(', ')}`);
-	  }
-	}
+          }
+        }
         resolve(data);
       }
     });
   });
 }
 
-module.exports = countStudents
+module.exports = countStudents;
